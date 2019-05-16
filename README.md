@@ -9,6 +9,8 @@ main_cnn contains main models for training and testing
 
 for tesing data (images) will be shown in result_test.csv
 
+### output 
+
 ![alt text](dog_and_cat_confusion_matrix.png)
 
 ![alt text](dog_and_cat_roc_curve.png)
