@@ -1,6 +1,6 @@
 # CNN Classifcation Dog and Cat Using Tensorflow
 
-##model
+### model
 ![alt text](dog_cat_arc.gif)
 
 
