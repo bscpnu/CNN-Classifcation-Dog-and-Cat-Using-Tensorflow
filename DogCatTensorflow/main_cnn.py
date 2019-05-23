@@ -12,6 +12,8 @@ from sklearn.metrics import roc_curve
 from sklearn.metrics import roc_auc_score
 from sklearn.metrics import accuracy_score
 
+## author: Imam Mustafa Kamal
+## email: imamkamal52@gmail.com
 
 def new_weights(shape):
     return tf.Variable(tf.truncated_normal(shape, stddev=0.05))
@@ -46,8 +48,14 @@ def new_conv_layer(input,  # The previous layer.
 
 
 def flatten_layer(layer):
+    # layer_shape == [num_images, img_height, img_width, num_channels]
+
+    # The number of features is: img_height * img_width * num_channels
+    # We can use a function from TensorFlow to calculate this.
+
     layer_shape = layer.get_shape()
     num_features = layer_shape[1:4].num_elements()
+    # Reshape the layer to [num_images, num_features]
     layer_flat = tf.reshape(layer, [-1, num_features])
 
     return layer_flat, num_features
@@ -75,7 +83,7 @@ def print_progress(epoch, feed_dict_train, feed_dict_validate, val_loss):
     msg = "Epoch {0} --- Training Accuracy: {1:>6.1%}, Validation Accuracy: {2:>6.1%}, Validation Loss: {3:.3f}"
     print(msg.format(epoch + 1, acc, val_acc, val_loss))
 
-def optimize(num_iterations):
+def optimize(train_batch_size, num_iterations):
     # Ensure we update the global variable rather than a local copy.
     global total_iterations
 
@@ -295,6 +303,6 @@ if __name__=='__main__':
     train_batch_size = batch_size
 
     total_iterations = 0
-    optimize(num_iterations=10000)  # We performed 1000 iterations above.
+    optimize(train_batch_size, num_iterations=10000)  # We performed 1000 iterations above.
 
     write_predictions(data_test)

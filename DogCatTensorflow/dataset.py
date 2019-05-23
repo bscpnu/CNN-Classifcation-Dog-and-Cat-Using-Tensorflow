@@ -4,6 +4,8 @@ import numpy as np
 import cv2
 from sklearn.utils import shuffle
 
+## author: Imam Mustafa Kamal
+## email: imamkamal52@gmail.com
 
 def load_data(data_path, image_size, classes):
     images = []
